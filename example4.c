@@ -2,7 +2,7 @@
 #include <omp.h>
 int main()
 {
-	#pragma omp parallel sections num_threads(3)
+	#pragma omp parallel sections 
    	{
      		#pragma omp section
       		{
