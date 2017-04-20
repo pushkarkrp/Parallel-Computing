@@ -70,4 +70,4 @@ int main()
 	int stop_s=clock();//end Time
 	printf("Time taken: %.6fs\n", (double)(stop_s - start_s)/CLOCKS_PER_SEC);
 }
-Contact GitHub API Training Shop Blog About
+
