@@ -1,6 +1,11 @@
 #include<bits/stdc++.h>
 #define n 100000000
 int arr[n];
+/* This function takes first element as pivot, places
+   the pivot element at its correct position in sorted
+    array, and places all smaller (smaller than pivot)
+   to left of pivot and all greater elements to right
+   of pivot */
 int partition(int arr[], int low, int high){
 	int i, j, temp, key;
 	key = arr[low];
@@ -25,7 +30,10 @@ int partition(int arr[], int low, int high){
 	}
 }
 
-
+/* The main function that implements QuickSort
+ arr[] --> Array to be sorted,
+  low  --> Starting index,
+  high  --> Ending index */
 void quicksort(int arr[], int low, int high)
 {
 	int j;
@@ -42,24 +50,24 @@ void quicksort(int arr[], int low, int high)
 
 int main()
 {
-	int start_s=clock();
+	int start_s=clock();//start time
 	for(int i=0;i<n;i++){
-		arr[i]=rand()%n;
+		arr[i]=rand()%n;//filling random value
 	}
 
-	int j = partition(arr,0,n-1);
+	int j = partition(arr,0,n-1);// returns the pivot element
 		#pragma omp parallel sections
 		{
 			#pragma omp section
 			{
-        			quicksort(arr,0, j - 1);
+        			quicksort(arr,0, j - 1);//Thread 1
     			}
 			#pragma omp section
 			{
-        			quicksort(arr, j + 1, n-1);
+        			quicksort(arr, j + 1, n-1);//Thread 2
    			}
 		}
-	int stop_s=clock();
+	int stop_s=clock();//end Time
 	printf("Time taken: %.6fs\n", (double)(stop_s - start_s)/CLOCKS_PER_SEC);
 }
 Contact GitHub API Training Shop Blog About
